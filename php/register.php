@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registrieren</title>
         <link rel="icon" type="image/jpg" href="../images/icon.jpg">
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css" />
     </head>
     <body>
         <!--header>
@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
                             <?php echo isset($success) ? $success : ''; 
                                 echo $error; 
                                 if($result = $success){   
-                                header("Refresh:1; url= ../authsystem/login.php");
+                                header("Refresh:1; url= ../php/login.php");
                                 }
                                 ?>
                             </div>

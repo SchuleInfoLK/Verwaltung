@@ -30,7 +30,7 @@ $user = $result->fetch_assoc();
 
 </html>
 <?php
-session_start();
+#session_start();
 
 if(!isset($_SESSION["userid"]) || $_SESSION["userid"] !== false){
     header("Refresh:1; url= ../php/Homepage.php");

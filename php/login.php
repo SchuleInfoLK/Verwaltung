@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Anmeldung</title>
         <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css" />
-        <link rel="icon" type="image/png" href="../images/icon.png">
+        <link rel="icon" type="image/png" href="../pictures/icon.png">
     </head>
     <body>
         <!--<header>

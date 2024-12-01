@@ -8,7 +8,7 @@
             "type": "msedge",
             "request": "launch",
             "name": "Open Homepage.html",
-            "file": "c:\\Users\\Philipp\\Documents\\GitHub\\Verwaltung\\php\\login.php"
+            "file": "http://localhost/Verwaltung/php/login.php"
         }
     ]
 }
