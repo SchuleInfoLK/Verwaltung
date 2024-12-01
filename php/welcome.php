@@ -1,6 +1,7 @@
 <?php
 require_once "config.php";
 session_start();
+header('Content-Type: text/html; charset=utf-8');
 
 $userid = $_SESSION["userid"];
 $query = "SELECT * FROM users WHERE id = ?";

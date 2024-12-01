@@ -103,10 +103,16 @@ a:hover{
 }
 #lougouta{
     background-color: blue;
-    border-color: blue;
     color: white;
+    border-width: 2px;
+    border-color: blue;
+    justify-self: right;
+    margin-left: 100px;
 }
+
 #lougouta:hover{
     background-color: #333;
+    border-width: 2px;
     color: white;
+    justify-self: right;
 }

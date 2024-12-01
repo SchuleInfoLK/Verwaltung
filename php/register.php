@@ -4,6 +4,7 @@ require_once "session.php";
 
 $error = ''; // Initialize the $error variable
 $success = ''; // Initialize the $success variable
+header('Content-Type: text/html; charset=utf-8');
 
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
 

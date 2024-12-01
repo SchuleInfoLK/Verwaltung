@@ -18,7 +18,7 @@
                 <option value="..//html/not_available.html">Wetterkarte</option>
             </select>
             <div id="lougouta">
-                <input type="submit" name="submit" class="btn-primary" value="Abmelden" id="logout">
+                <button id="logout" onclick="sendenlogout()">Abmelden</button>
             </div>
         </header>
 
@@ -44,7 +44,7 @@
              location.href =Auswahl.value;})  
 
             const logoutb = document.getElementById('logout');
-            logoutb.addEventListener("click", sendenlogout);
+            logoutb.addEventListener("click", src="data.js",sendenlogout);
         </script>
     </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
 session_start();
+header('Content-Type: text/html; charset=utf-8');
 
 if(!isset($_SESSION["userid"]) || $_SESSION["userid"] !== false){
-
+   
 }else{
     header("location: login.php");
    exit;
@@ -23,12 +24,14 @@ if(!isset($_SESSION["userid"]) || $_SESSION["userid"] !== false){
         <header>
             <h1> Homepage &#160 &#160 &#160 &#160 &#160</h1>
 
-            <select id="mainselect">
+            <select id="mainselect" title="Auswahl treffen">
                 <option value="(Auswahl)" selected ="selected">Home</option>
                 <option value="..//html/not_available.html">Wetterkarte</option>
             </select>
 
-            <input type="submit" name="submit" class="btn-primary" value="Abmelden" id="logout">
+            <div id="lougouta">
+                <button id="logout" onclick="sendenlogout()">Abmelden</button>
+            </div>
         </header>
 
         <main>
@@ -45,13 +48,13 @@ if(!isset($_SESSION["userid"]) || $_SESSION["userid"] !== false){
                 <a href="../html/Datenschutz.html">Datenschutz</a>
             </p>
         </footer>
-    
         <script>
             const Auswahl = document.getElementById("mainselect");
             Auswahl.addEventListener("change", function(){
              if(Auswahl.value != "(Auswahl)")
              location.href =Auswahl.value;})  
-
+        </script>
+        <script>
             const logoutb = document.getElementById('logout');
             logoutb.addEventListener("click", sendenlogout);
         </script>
