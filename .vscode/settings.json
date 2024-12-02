@@ -1,0 +1,6 @@
+{
+    "git.allowForcePush": true,
+    "git.allowNoVerifyCommit": true,
+    "git.requireGitUserConfig": false,
+    "git.terminalGitEditor": true
+}
