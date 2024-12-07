@@ -70,3 +70,16 @@ a:hover{
     color: white;
     background-color: #333;
 }
+#warnactive{
+    background-color: red;
+    color: white;
+    top: 10px;
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+    position: sticky;
+}
+#warnkarte{
+    display: flex;
+    justify-content: right;
+}
