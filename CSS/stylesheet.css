@@ -80,6 +80,14 @@ a:hover{
     position: sticky;
 }
 #warnkarte{
+    right: 0;
+    box-sizing: border-box;
+}
+#testtext{
+    left: 0;
+    box-sizing: border-box;
+}
+#maincontent{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }

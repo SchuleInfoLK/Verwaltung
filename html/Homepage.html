@@ -3,11 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://dwd.api.proxy.bund.dev/v30/stationOverviewExtended?stationIds=02649,G005"></script>
         <script src="../js/data.js"></script>
         <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css" />
         <title>Home</title>
         <link rel="icon" type="image/jpg"
               href="../pictures/icon.png">
+              <style>
+                    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;}
+              </style>
     </head>
     <body>
         <header>
@@ -24,9 +31,19 @@
             <div id="warnactive">
                 <p>Aktuell keine Warnungen für deinen Standort!</p>
             </div>
-            <div id="warnkarte">
-                <img src="https://s3.eu-central-1.amazonaws.com/app-prod-static.warnwetter.de/v16/gemeinde_warning_overview.png">
+            <div id="maincontent">
+                <div id="warnkarte">
+                    <img src="https://s3.eu-central-1.amazonaws.com/app-prod-static.warnwetter.de/v16/gemeinde_warning_overview.png">
+                </div>
+                <div id="testtext">
+                    <div id="warnungen"></div>
+                    <script src="../js/warning.js"></script>     
+                    
+                    <div id="output"></div><!-- Aktuell: Frankfurt/Main (Terminal) Stations ID = 1423    Stationskennung = 02559 -->
+                    <script src="../js/stadtiondaten.js"></script>
+                </div>
             </div>
+
         </main>
 
         <footer>
