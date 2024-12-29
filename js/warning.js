@@ -2,7 +2,7 @@
 const monitoredRegions = ["Berlin", "München", "Hamburg"];
 
 // API-Endpunkt der DWD
-const DWD_API_URL = "https://dwd.api.proxy.bund.dev/v30/gemeinde_warnings_v2.json";
+const DWD_API_URL = "https://s3.eu-central-1.amazonaws.com/app-prod-static.warnwetter.de/v16/gemeinde_warnings_v2.json";
 
 // Funktion zum Abrufen der Warnungen
 async function fetchWarnings() {

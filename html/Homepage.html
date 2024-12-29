@@ -44,6 +44,239 @@
                 </div>
             </div>
 
+            <section class="content">
+                <div id="appBox">
+                        <div id="headerContainer">
+                          <div id="searchBox">
+                            <input id="gemeindeSearchInput" value="" type="text" placeholder="Bitte Ort eingeben" size="26" maxlength="50" autocomplete="off" class="">
+                            <input type="submit" name="submitButton" value="Suchen" id="searchGemeindeBtn" class="">
+                            <ul id="inputDrop" style="display: none;" data-current-selection="0"><li class=" inputDropSelected">Eppstein</li><li class="">Elmstein</li><li>Stein (Kreis Plön)</li><li>Stein (Kreis Fürth)</li><li>Hopsten</li><li>Idstein</li><li>Arnstein (Kreis Main-Spessart)</li><li>Arnstein (Kreis Mansfeld-Südharz)</li><li>Birstein</li><li>Darstein</li><li>Offstein</li><li>Warstein</li><li>Abtsteinach</li><li>Oststeinbek</li><li>Parsteinsee</li><li>Ramstein-Miesenbach</li><li>Appen</li><li>Eutin</li><li>Osten</li><li>Plein</li></ul>
+                          </div>
+                          <div id="refreshBox">
+                            <label style="font-size:14px">
+                              <input type="checkbox" id="autoRefreshBox" checked="" onclick="handleRefreshClick(this);"> Autom. Aktualisierung
+                            </label>
+                          </div>
+                          <div id="headerBox"><p><strong>Letzte Aktualisierung: So, 29. Dez, 12:30 Uhr</strong></p></div>
+                        </div>
+                        <div class="clear" id="firstClear"></div>
+                        <div id="middleBox">
+                          <div id="svgBoxOuter">
+                            <div id="svgBox">
+                                <object data="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/warnkarte.svg?v=5" type="image/svg+xml" id="warningregionsvg"></object>
+                                <div id="svgoverlay" class="" style="display: none;">
+                                  <div class="spinner"></div>
+                                </div>
+                                <img class="mapbtn" id="zoomin" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/button_zoom_in.png">
+                                <img class="mapbtn" id="zoomout" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/button_zoom_out.png">
+                                <img class="mapbtn" id="zoomreset" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/button_reset.png">
+                                <img id="maplogo" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/dwd_logo.png">
+                                <div id="copy">
+                                  Copyright: © Deutscher Wetterdienst<br>Geobasisdaten: ©  <a target="_blank" href="http://www.bkg.bund.de">BKG</a> 2015 (Daten verändert)
+                                </div>
+                            </div>
+                          </div>
+                          <div id="selectionBoxOuter">
+                            <div id="selectionBox" style="display: block;">
+                              <div id="selectionBox1">
+                                <div id="filter_0" class="btn typebtn greenborder" data-type="0" style="display: none;" data-maxlevel="0"><img id="filter_img_0" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_gewitter.png" title="Gewitter inklusive Begleiterscheinungen" alt="Gewitter inklusive Begleiterscheinungen"></div>
+                                <div id="filter_1" class="btn typebtn orangeborder" data-type="1" style="" data-maxlevel="3"><img id="filter_img_1" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_sturm.png" title="Wind/Sturm/Orkan" alt="Wind/Sturm/Orkan"></div>
+                                 <div id="filter_2" class="btn typebtn greenborder" data-type="2" style="display: none;" data-maxlevel="0"><img id="filter_img_2" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_regen.png" title="Stark- und Dauerregen" alt="Stark- und Dauerregen"></div>
+                                <div id="filter_3" class="btn typebtn greenborder" data-type="3" style="display: none;" data-maxlevel="0"><img id="filter_img_3" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_schnee.png" title="Schneefall/Schneeverwehungen" alt="Schneefall/Schneeverwehungen"></div>
+                                <div id="filter_4" class="btn typebtn greenborder" data-type="4" style="display: none;" data-maxlevel="0"><img id="filter_img_4" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_nebel.png" title="Nebel" alt="Nebel"></div>
+                                <div id="filter_5" class="btn typebtn yellowborder" data-type="5" style="" data-maxlevel="2"><img id="filter_img_5" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_frost.png" alt="Frost" title="Frost"></div>
+                                <div id="filter_6" class="btn typebtn yellowborder" data-type="6" style="" data-maxlevel="2"><img id="filter_img_6" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_glatteis.png" alt="Glätte/Glatteis" title="Glätte/Glatteis"></div>
+                                <div id="filter_7" class="btn typebtn greenborder" data-type="7" style="display: none;" data-maxlevel="0"><img id="filter_img_7" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_tauwetter.png" title="Tauwetter" alt="Tauwetter"></div>
+                                <div id="filter_8" class="btn typebtn greenborder" data-type="8" style="display: none;" data-maxlevel="0"><img id="filter_img_8" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_hitze.png" alt="Hitzewarnungen" title="Hitzewarnungen"></div>
+                                <div id="filter_9" class="btn typebtn greenborder" data-type="9" style="display: none;" data-maxlevel="0"><img id="filter_img_9" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_uv.png" alt="UV-Warnungen" title="UV-Warnungen"></div>
+                                <div id="filter_-1" class="btn typebtn orangeborder orange" data-type="-1" style="" data-maxlevel="3"><img id="filter_img_-1" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_alle.png" alt="Alle amtlichen Warnungen" title="Alle amtlichen Warnungen"></div>
+                              </div>
+                              <div id="selectionBox2" style="">
+                                <div id="filter_10" class="btn typebtn yellowborder" data-type="10" style="" data-maxlevel="2"><img id="filter_img_10" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_kueste.png" title="Küstenwarnungen" alt="Küstenwarnungen"></div>
+                                <!-- Remove to enable SEA Warnings-->
+                                <div style="display: none;">
+                                  <div id="filter_12" class="btn typebtn greenborder" data-type="12" style="" data-maxlevel="0"><img id="filter_img_12" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_sea.png" title="Seewarnungen" alt="Seewarnungen"></div>
+                                </div>
+                                <div id="filter_11" class="btn typebtn greenborder" data-type="11" style="" data-maxlevel="0"><img id="filter_img_11" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warnicons/warn_icons_binnensee.png" title="Binnenseewarnungen" alt="Binnenseewarnungen"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="infoBox"><h2 class="warningRegion">Eppstein</h2><div class="warningDetailsBox" onclick="javascript:DRAW.selectWarningPolygon(this, 0)"><div class="warningHeadlineIconBox"><img class="warnicon" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/warn_icons_glatteis.png"><img class="warniconFrame" src="/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/gelb.png"></div><div class="warningHeadlineTitleBox"><h3>Amtliche WARNUNG vor GLÄTTE</h3><p><strong>So, 29. Dez, 12:21 – 17:00 Uhr</strong></p></div><div class="clearSmall"></div><div><p>Es besteht vereinzelt Glättegefahr.</p></div><div class="clearSmall"></div><p><a class="instructionClosed" href="javascript:void(0);" onclick="javascript:DRAW.toggleInstruction(event)">Mögliche Gefahren anzeigen</a></p><p class="instructionTextClosed">Hinweis auf Rutschgefahr. 
+            Handlungsempfehlungen: 
+            Verhalten im Straßenverkehr anpassen</p></div><div class="clear"></div><div class="warningDetailsBox" onclick="javascript:DRAW.selectWarningPolygon(this, 1)"><div class="warningHeadlineIconBox"><img class="warnicon" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/warn_icons_frost.png"><img class="warniconFrame" src="/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/gelb.png"></div><div class="warningHeadlineTitleBox"><h3>Amtliche WARNUNG vor FROST</h3><p><strong>So, 29. Dez, 12:00 – 17:00 Uhr</strong></p></div><div class="clearSmall"></div><div><p>Es tritt leichter Frost zwischen 0 °C und -3 °C auf.</p></div><div class="clearSmall"></div><p><a class="instructionClosed" href="javascript:void(0);" onclick="javascript:DRAW.toggleInstruction(event)">Mögliche Gefahren anzeigen</a></p><p class="instructionTextClosed">Hinweis auf mögliche Frostschäden. 
+            Handlungsempfehlungen: 
+            ggf. Frostschutzmaßnahmen ergreifen</p></div><div class="clear"></div><div class="warningDetailsBox" onclick="javascript:DRAW.selectWarningPolygon(this, 2)"><div class="warningHeadlineIconBox"><img class="warnicon" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/warn_icons_glatteis.png"><img class="warniconFrame" src="/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/gelb.png"></div><div class="warningHeadlineTitleBox"><h3>Amtliche WARNUNG vor GLÄTTE</h3><p><strong>So, 29. Dez, 17:00 – Mo, 30. Dez 10:00 Uhr</strong></p></div><div class="clearSmall"></div><div><p>Es besteht vereinzelt Glättegefahr.</p></div><div class="clearSmall"></div><p><a class="instructionClosed" href="javascript:void(0);" onclick="javascript:DRAW.toggleInstruction(event)">Mögliche Gefahren anzeigen</a></p><p class="instructionTextClosed">Hinweis auf Rutschgefahr. 
+            Handlungsempfehlungen: 
+            Verhalten im Straßenverkehr anpassen</p></div><div class="clear"></div><div class="warningDetailsBox" onclick="javascript:DRAW.selectWarningPolygon(this, 3)"><div class="warningHeadlineIconBox"><img class="warnicon" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/warn_icons_frost.png"><img class="warniconFrame" src="/DWD/warnungen/warnapp_gemeinden/viewer/img/warndreieck/gelb.png"></div><div class="warningHeadlineTitleBox"><h3>Amtliche WARNUNG vor FROST</h3><p><strong>So, 29. Dez, 17:00 – Mo, 30. Dez 11:00 Uhr</strong></p></div><div class="clearSmall"></div><div><p>Es tritt leichter Frost zwischen 0 °C und -4 °C auf.</p></div><div class="clearSmall"></div><p><a class="instructionClosed" href="javascript:void(0);" onclick="javascript:DRAW.toggleInstruction(event)">Mögliche Gefahren anzeigen</a></p><p class="instructionTextClosed">Hinweis auf mögliche Frostschäden. 
+            Handlungsempfehlungen: 
+            ggf. Frostschutzmaßnahmen ergreifen</p></div><div class="clear"></div></div>
+                        <div class="clear"></div>
+                        <div id="legendBox">
+                            <div id="legendBox1" class="legendBox">
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><div class="box darkred" title="Warnungen vor extremem Unwetter"></div></td><td><p>Warnungen vor extremem Unwetter (Stufe 4)</p></td>
+                                </tr>
+                                <tr>
+                                  <td><div class="box red" title="Unwetterwarnungen"></div></td><td><p>Unwetterwarnungen (Stufe 3)</p></td>
+                                </tr>
+                                <tr>
+                                  <td><div class="box orange" title="Warnungen vor markantem Wetter"></div></td><td><p>Warnungen vor markantem Wetter (Stufe 2)</p></td>
+                                </tr>
+                                <tr>
+                                  <td><div class="box yellow" title="Wetterwarnungen"></div></td><td><p>Wetterwarnungen (Stufe 1)</p></td>
+                                </tr>
+                              </tbody></table>
+                            </div>
+                            <div id="legendBox2" class="legendBox">
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><img id="legend_vorab" class="box vorab" src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/vorab.png" alt="Vorabinformation Unwetter" title="Vorabinformation Unwetter"></td>
+                                  <td><p>Vorabinformation Unwetter</p></td>
+                                </tr>
+                                 <tr>
+                                    <td><div class="box violet_extreme_hitze" title="Hitzewarnung (extrem)"></div></td><td><p>Hitzewarnung (extrem)</p></td>
+                                  </tr>    
+                                  <tr>
+                                    <td><div class="box violet_hitze" title="Hitzewarnungen"></div></td><td><p>Hitzewarnung</p></td>
+                                  </tr>
+                                  <tr>
+                                    <td><div class="box violet_uv" title="UV-Warnungen"></div></td><td><p>UV-Warnung</p></td>
+                                  </tr>
+                                  <tr>
+                                    <td><div class="box green" title="Keine Warnungen"></div></td><td><p>Keine Warnungen</p></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div style="clear: both;"></div>
+                          </div>
+                    <script src="https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/gemeinden.js?v=5"></script>
+                    <script type="application/javascript">
+                    //// WarnWetter App Config ////
+                    // Base url for images, with trailing slash
+                    warnWetter.setImageBaseUrl("https://dwd.de/DWD/warnungen/warnapp_gemeinden/viewer/img/");
+                    // Set BL
+                    warnWetter.setSelectedBL(parseBundeslandFromURL());
+                    // Reload time, in milliseconds
+                    var RELOAD_TIMEOUT = 120000;
+                    // Is Gemeinde Warnungen
+                    var GEMEINDE_WARNUNGEN = true;
+                    warnWetter.setGemeindeWarnungen(GEMEINDE_WARNUNGEN)
+                    //////
+                    var timeoutId = null;
+                    function loadJsonP(autoRefresh) {
+                    var script = document.createElement('script');
+                    var file = 'https://dwd.de/DWD/warnungen/warnapp_landkreise/json/warnings.json';
+                    if (GEMEINDE_WARNUNGEN) {
+                    file = 'https://dwd.de/DWD/warnungen/warnapp_gemeinden/json/warnings_gemeinde.json';
+                    }
+                    script.src = ""+ file + "?jsonp=loadWarnings" + new Date().getTime();
+                    document.getElementsByTagName('head')[0].appendChild(script);
+                    if (autoRefresh) {
+                    timeoutId = setTimeout("loadJsonP(true)", RELOAD_TIMEOUT);
+                    }     
+                    }
+                    function handleRefreshClick(checkBox) {
+                    if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    }
+                    if (checkBox.checked) {
+                    loadJsonP(checkBox.checked);
+                    }
+                    }
+                    function parseBundeslandFromURL() {
+                    var sParam = location.search.substring(1);
+                    if (sParam && sParam.length > 0) {
+                    sParam = sParam.replace(/amp;/g,'');
+                    var aKeyValue = sParam.split("&");
+                    for (var i = 0, n = aKeyValue.length; i < n; i++) {
+                    if (aKeyValue[i].indexOf('=') > 0) {
+                    var aSingleKeyValue = aKeyValue[i].split('=');
+                    if (aSingleKeyValue[0] && (aSingleKeyValue[0] == 'bundesland')) {
+                    if (aSingleKeyValue[1] && (/all|baw|bay|bbb|hes|mvp|nib|nrw|rps|sac|saa|shh|thu/).test(aSingleKeyValue[1])) {
+                    return aSingleKeyValue[1];
+                    }
+                    break;
+                    }
+                    }
+                    }
+                    }
+                    return 'all';
+                    }
+                    loadJsonP(true);
+                    </script>
+            Hier geht es zu den <a href="https://dwd.de/DE/wetter/warnungen_landkreise/warnWetter_node.html" title="Landkreiswarnungen">Landkreiswarnungen</a>.<br><br><section><div id=""><div class="row text"><article class="article-full" role="article"><div class="body-text"><div class="paragraph"> 
+            <div id="wettertext">
+            <h3>Beschreibung der Warnlage Deutschland</h3>
+            <strong>ausgegeben vom Deutschen Wetterdienst<br>
+            am Sonntag, 29.12.2024, 12:09 Uhr </strong><br>
+            <pre style="font-family: sans-serif">Verbreitet Frost in der Mitte sowie im Süden. Gebietsweise Glätte im Westen. Ab dem Abend Sturmböen auf Rügen und verbreitet Windböen im Norden.
+            </pre>
+            <br>
+            Deutscher Wetterdienst, VBZ Offenbach
+            <br>
+            <br>
+            </div></div></div></article></div></div></section>
+            <div class="slot content">
+            <div class="row">
+            <section class="teaser-group">
+                <h1>Naturgefahren</h1>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/naturgefahren/hochwasser.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/naturgefahren/_functions/Teasergroup/teaserbild_hochwasser.png?__blob=normal&amp;v=6" title="Symbol für  Hochwasser vor abgepumpten Wasser (Quelle © Heidrun Hobel / panthermedia.net (bearbeitet))" alt="Symbol für  Hochwasser vor abgepumpten Wasser (Quelle © Heidrun Hobel / panthermedia.net (bearbeitet))"></figure><h2>Hochwasser</h2><p>Hochwasserinformationen und Wasserstände</p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/naturgefahren/sturmflut.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/naturgefahren/_functions/Teasergroup/teaserbild_sturmflut.png?__blob=normal&amp;v=6" title="Hochwassersymbol vor überflutetem Fischmarkt (Quelle © Jens Siggelkow; / panthermedia.net (bearbeitet))" alt="Hochwassersymbol vor überflutetem Fischmarkt (Quelle © Jens Siggelkow; / panthermedia.net (bearbeitet))"></figure><h2>Sturmflut</h2><p>Informationen zu erwarteten Sturmfluten</p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/naturgefahren/lawinen.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/naturgefahren/_functions/Teasergroup/teaserbild_lawinen.png?__blob=normal&amp;v=5" title="Symbol für Lawine auf einem Schneegrund (Quelle © Beate Konstantinou / panthermedia.net (bearbeitet))" alt="Symbol für Lawine auf einem Schneegrund (Quelle © Beate Konstantinou / panthermedia.net (bearbeitet))"></figure><h2>Lawinen</h2><p>Lawinengefahr in den deutschen Alpen</p>
+            </a></div></div>
+                                     <div class="clear"></div>
+            </section>
+            </div>
+            </div>
+            <div class="slot content">
+            <div class="row">
+            <section class="teaser-group">
+                <h1>Erläuterungen und Kriterien</h1>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/neuerungen/gemeindewarnungen_node.html"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_hinweis.jpg?__blob=normal&amp;v=8" title="Gelbe Warnkarte, auf der Symbole wie Schneefall u.s.w. liegen (Quelle DWD)" alt="Gelbe Warnkarte, auf der Symbole wie Schneefall u.s.w. liegen (Quelle DWD)"></figure><h2>Neuerungen und Tipps</h2><p>Änderung der Warngebiete (April 2020);  Hamburg nun auch mit Stadtteilwarnungen<br>
+            </p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/kriterien/warnkriterien.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_warnkriterien.jpg?__blob=normal&amp;v=4" title="Es gibt unterschiedliche Symbole für die einzelnen Warnkriterien (Quelle DWD)" alt="Es gibt unterschiedliche Symbole für die einzelnen Warnkriterien (Quelle DWD)"></figure><h2>Warnkriterien</h2><p>Ab welchen Schwellenwerten werden die Stufen wie <abbr title="zum Beispiel">z.B.</abbr> Wetterwarnungen und Unwetterwarnungen ausgesprochen?</p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/kriterien/warnstufen.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_warnstufen.png?__blob=normal&amp;v=4" title="Farbzuordnung der unterschiedlichen Warnungen (Quelle DWD)" alt="Farbzuordnung der unterschiedlichen Warnungen (Quelle DWD)"></figure><h2>Warnstufen + Farbskala</h2><p>Was bedeuten Warnstufen und die Farben der verschiedenen Warnungen?</p>
+            </a></div></div>
+                                     <div class="clear"></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/kriterien/seewarnungen.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_see_kueste3.jpg?__blob=normal&amp;v=6" title="Segelboot mit weißem Segel am Ufer eines Sees (Quelle © Ewald Fröch/Fotolia)" alt="Segelboot mit weißem Segel am Ufer eines Sees (Quelle © Ewald Fröch/Fotolia)"></figure><h2>Binnensee- und Küstenwarnungen</h2><p>Wann warnen wir auf den Binnenseen und an der Küste?</p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/kriterien/uv_hitze_warnungen.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_hitze.jpg?__blob=normal&amp;v=6" title="Person trinkt bei Hitze aus einer Wasserflasche (Quelle © Kzenon/Fotolia)" alt="Person trinkt bei Hitze aus einer Wasserflasche (Quelle © Kzenon/Fotolia)"></figure><h2>Hitze- und <abbr title="Ultraviolett">UV</abbr>-Warnungen</h2><p>Wann warnen wir vor extremer Hitze und bei zu starker Sonnenstrahlung?</p>
+            </a></div></div>
+            
+                                       
+            <div class="teaser"><div class="teaser-box"><a href="https://dwd.deDE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaser_unwetterklimatologie.html?nn=508722"><figure class="picture linksOhne"><img src="https://dwd.de/DE/wetter/warnungen_aktuell/kriterien/_functions/Teasergroup/teaserbild_unwetterklimatologie.png?__blob=thumbnail&amp;v=9" title="Dunkler Himmel. Ein Blitz schlägt bis zum Boden durch. (Quelle © Clemens Humeniuk / panthermedia.net)" alt="Dunkler Himmel. Ein Blitz schlägt bis zum Boden durch. (Quelle © Clemens Humeniuk / panthermedia.net)"></figure><h2>Wie häufig sind Unwetter?</h2><p>Klimatologische Informationen zu ausgewählten Unwetterereignissen</p>
+            </a></div></div>
+                                     <div class="clear"></div>
+            </section>
+            </div>
+            </div>
+            </div></section>
         </main>
 
         <footer>
@@ -62,5 +295,6 @@
              if(Auswahl.value != "(Auswahl)")
              location.href =Auswahl.value;})  
         </script>
+
     </body>
 </html>
